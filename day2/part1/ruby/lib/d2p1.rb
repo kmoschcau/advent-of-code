@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Calculate the end position of the submarine.
-# @param file [File] the file get the move commands from
+# @param file [#each] the file get the move commands from
 # @return [Integer] the end position
 def calc_position(file)
   sub = Submarine.new

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Count the increases of numbers between two consecutive lines in a file.
-# @param file [File] the file to count increases in
+# @param file [#each_cons] the file to count increases in
 # @return [Integer] the number of increases
 def count_increases(file)
   increases = 0

@@ -2,7 +2,7 @@
 
 # Count the increases of numbers between two consecutive windows, consisting of
 # three lines in a file.
-# @param file [File] the file to count increases in
+# @param file [#each_cons] the file to count increases in
 # @return [Integer] the number of increases
 def count_increases_windowed(file)
   increases = 0
