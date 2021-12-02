@@ -7,28 +7,22 @@ RSpec.describe Submarine do
     @sub = Submarine.new
   end
 
-  context 'when passed forwards' do
-    it 'has the correct position out of the total' do
-      @sub.forward 42
-      @sub.forward 24
-      expect(@sub.position).to eq 66
+  context 'when running the example' do
+    before(:each) do
+      @sub.forward 5
+      @sub.down 5
+      @sub.forward 8
+      @sub.up 3
+      @sub.down 8
+      @sub.forward 2
     end
-  end
 
-  context 'when passed downs' do
-    it 'has the correct depth out of the total' do
-      @sub.down 25
-      @sub.down 75
-      expect(@sub.depth).to eq 100
+    it 'has the correct depth' do
+      expect(@sub.depth).to eq 10
     end
-  end
 
-  context 'when passed downs and ups' do
-    it 'has the correct depth of the sum of downs minus the sum of ups' do
-      @sub.down 3
-      @sub.up 1
-      @sub.down 100
-      expect(@sub.depth).to eq 102
+    it 'has the correct position' do
+      expect(@sub.position).to eq 15
     end
   end
 end
