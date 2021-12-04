@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+(1..25).each do |day|
+  (1..2).each do |part|
+    file = "../lib/d#{day}p#{part}"
+    abs_path = File.expand_path("#{file}.rb", File.dirname(__FILE__))
+    require_relative file if File.file? abs_path
+  end
+end
+
+puts send ARGV.shift, ARGF.to_a.map(&:strip)
