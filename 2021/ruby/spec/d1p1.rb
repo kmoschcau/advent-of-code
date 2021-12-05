@@ -6,7 +6,7 @@ require_relative '../lib/d1p1'
 
 RSpec.describe '#d1p1' do
   context 'when running the example' do
-    it 'returns the corrent number' do
+    it 'returns the correct number' do
       result = d1p1(%w[
                       199
                       200

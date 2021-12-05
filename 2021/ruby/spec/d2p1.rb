@@ -6,7 +6,7 @@ require_relative '../lib/d2p1'
 
 RSpec.describe '#d2p1' do
   context 'when running the example' do
-    it 'returns the corrent number' do
+    it 'returns the correct number' do
       result = d2p1([
                       'forward 5',
                       'down 5',

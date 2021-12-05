@@ -6,7 +6,7 @@ require_relative '../lib/d3p2'
 
 RSpec.describe '#d3p2' do
   context 'when running the example' do
-    it 'has the correct depth' do
+    it 'returns the correct number' do
       result = d3p2(%w[
                       00100
                       11110

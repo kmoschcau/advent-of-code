@@ -6,7 +6,7 @@ require_relative '../lib/d4p2'
 
 RSpec.describe '#d4p2' do
   context 'when running the example' do
-    it 'has the correct depth' do
+    it 'returns the correct number' do
       lines = ['7,4,9,5,11,17,23,2,0,14,21,24,10,16,13,6,15,25,12,22,18,20,8,19,3,26,1',
                '',
                '22 13 17 11  0',
