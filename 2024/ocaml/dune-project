@@ -1,0 +1,25 @@
+(lang dune 3.17)
+
+(name advent)
+
+(generate_opam_files true)
+
+(source
+ (github kmoschcau/advent-of-code))
+
+(authors "Kai Moschcau <mail@kmoschcau.de>")
+
+(maintainers "Kai Moschcau <mail@kmoschcau.de>")
+
+(license MIT)
+
+(documentation https://adventofcode.com/2024)
+
+(package
+ (name advent)
+ (synopsis "Advent of Code solutions in OCaml")
+ (description "Advent of Code 2024 solutions in OCaml")
+ (depends ocaml)
+ (tags ("advent of code")))
+
+; See the complete stanza docs at https://dune.readthedocs.io/en/stable/reference/dune-project/index.html
