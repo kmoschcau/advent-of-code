@@ -51,3 +51,30 @@ let p1 input =
     split_lines input |> parse_lines |> sort_lists |> to_list_of_tuples
   in
   List.fold_right distance_acc tuples 0
+
+(* ========================================================================== *)
+
+module IntMap = Map.Make (Int)
+(** A map with int keys. *)
+
+(** An accumulator for counting occurrences of location IDs. *)
+let counting_acc loc_id counts =
+  IntMap.update loc_id
+    (fun count_option ->
+      match count_option with None -> Some 1 | Some count -> Some (count + 1))
+    counts
+
+(** Count the occurrences of location IDs. *)
+let count_occs loc_ids = List.fold_right counting_acc loc_ids IntMap.empty
+
+(** Calculate the puzzle solution for part 2. *)
+let p2 input =
+  match split_lines input |> parse_lines |> sort_lists with
+  | left_list, right_list ->
+      let counts = count_occs right_list in
+      List.fold_right
+        (fun loc_id total ->
+          match IntMap.find_opt loc_id counts with
+          | None -> total
+          | Some count -> count + total)
+        left_list 0
