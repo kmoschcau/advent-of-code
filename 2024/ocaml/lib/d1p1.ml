@@ -1,7 +1,8 @@
-let split_lines input = String.split_on_char '\n' input
+let remove_empty string = List.filter (fun s -> s <> "") string
+let split_lines input = String.split_on_char '\n' input |> remove_empty
 
 let parse_line line =
-  let parts = String.split_on_char ' ' line |> List.filter (fun e -> e <> "") in
+  let parts = String.split_on_char ' ' line |> remove_empty in
   match parts with
   | [ l; r ] -> (int_of_string l, int_of_string r)
   | _ -> failwith "The line was unbalanced."
