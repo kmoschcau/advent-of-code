@@ -69,7 +69,7 @@ let count_occs loc_ids = List.fold_right counting_acc loc_ids IntMap.empty
 
 (** Calculate the puzzle solution for part 2. *)
 let p2 input =
-  match split_lines input |> parse_lines |> sort_lists with
+  match split_lines input |> parse_lines with
   | left_list, right_list ->
       let counts = count_occs right_list in
       List.fold_right
