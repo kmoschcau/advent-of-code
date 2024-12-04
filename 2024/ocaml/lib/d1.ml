@@ -76,5 +76,5 @@ let p2 input =
         (fun loc_id total ->
           match IntMap.find_opt loc_id counts with
           | None -> total
-          | Some count -> count + total)
+          | Some count -> (loc_id * count) + total)
         left_list 0
