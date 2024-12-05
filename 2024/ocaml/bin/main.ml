@@ -14,12 +14,17 @@ let () = Arg.parse speclist anon_fun "advent -d <day> -p <part>"
 let input_base_path = Filename.concat ".." "inputs"
 
 let input_file =
-  match !day with "1" -> "d1.txt" | _ -> invalid_arg "Invalid day"
+  match !day with
+  | "1" -> "d1.txt"
+  | "2" -> "d2.txt"
+  | _ -> invalid_arg "Invalid day"
 
 let func =
   match (!day, !part) with
   | "1", "1" -> Advent.d1p1
   | "1", "2" -> Advent.d1p2
+  | "2", "1" -> Advent.d2p1
+  | "2", "2" -> Advent.d2p2
   | _ -> invalid_arg "Invalid part"
 
 let () =
