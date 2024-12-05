@@ -60,16 +60,43 @@ let p1 input = split_lines input |> parse_lines |> count_safe_reports
 
 (* ========================================================================== *)
 
+(** Safety check accumulator for reverse traversal *)
+let safety_check_acc_rev level state = safety_check_acc state level
+
+(** Remove the level with the given index from the report. *)
+let removei index report = List.filteri (fun i _ -> i <> index) report
+
+(** Remove the level with the given reverse index from the report. *)
+let removei_rev index report =
+  let index_rev = List.length report - 1 - index in
+  List.filteri (fun i _ -> i <> index_rev) report
+
 (** Check if the given report is safe with tolerance. *)
 let is_report_safe_with_tolerance report =
   let state = List.fold_left safety_check_acc Indeterminate report in
   match state with
   | Unsafe { index } -> (
-      let cleaned_report = List.filteri (fun i _ -> i <> index) report in
+      let cleaned_report = removei index report in
       let cleaned_state =
         List.fold_left safety_check_acc Indeterminate cleaned_report
       in
-      match cleaned_state with Unsafe { index = _ } -> false | _ -> true)
+      match cleaned_state with
+      | Unsafe { index = _ } -> (
+          let state =
+            List.fold_right safety_check_acc_rev report Indeterminate
+          in
+          match state with
+          | Unsafe { index } -> (
+              let cleaned_report = removei_rev index report in
+              let cleaned_state =
+                List.fold_right safety_check_acc_rev cleaned_report
+                  Indeterminate
+              in
+              match cleaned_state with
+              | Unsafe { index = _ } -> false
+              | _ -> true)
+          | _ -> true)
+      | _ -> true)
   | _ -> true
 
 (** Count all safe with tolerance reports. *)
