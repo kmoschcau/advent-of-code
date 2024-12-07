@@ -19,7 +19,7 @@
  (name advent)
  (synopsis "Advent of Code solutions in OCaml")
  (description "Advent of Code 2024 solutions in OCaml")
- (depends ocaml)
+ (depends ocaml re)
  (tags ("advent of code")))
 
 ; See the complete stanza docs at https://dune.readthedocs.io/en/stable/reference/dune-project/index.html

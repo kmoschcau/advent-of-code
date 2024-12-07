@@ -17,6 +17,7 @@ let input_file =
   match !day with
   | "1" -> "d1.txt"
   | "2" -> "d2.txt"
+  | "3" -> "d3.txt"
   | _ -> invalid_arg "Invalid day"
 
 let func =
@@ -25,6 +26,8 @@ let func =
   | "1", "2" -> Advent.d1p2
   | "2", "1" -> Advent.d2p1
   | "2", "2" -> Advent.d2p2
+  | "3", "1" -> Advent.d3p1
+  | "3", "2" -> Advent.d3p2
   | _ -> invalid_arg "Invalid part"
 
 let () =
